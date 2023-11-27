@@ -1,16 +1,20 @@
 const baseEndpoint = 'https://api.github.com';
 const usersEndpoint = `${baseEndpoint}/users`;
-const $n = document.querySelector('name');
-const $b = document.querySelector('#blog');
+
+const $n = document.querySelector('.name'); // name debe de tener . por ser una clase
+const $b = document.querySelector('.blog'); //debe ser .blog por ser una clasee
 const $l = document.querySelector('.location');
 
 function displayUser(username) {
   $n.textContent = 'cargando...';
-  const response = await fetch(`${usersEndpoint}/${username}`);
-  console.log(data);
-  $n.textContent = '${data.name}';
-  $b.textContent = '${data.blog}';
-  $l.textContent = '${data.location}';
+  const data = fetch(`${usersEndpoint}/${username}`); // data
+  data.then (response =>{ 
+    console.log(response); 
+    $n.textContent = '${response.name}';
+    $b.textContent = '${response.blog}';// cambiar nombre de data a response
+    $l.textContent = '${response.location}';
+
+  })
 }
 
 function handleError(err) {
