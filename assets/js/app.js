@@ -17,6 +17,7 @@ function displayUser(username) {
   })
 }
 
+
 function handleError(err) {
   console.log('OH NO!');
   console.log(err);
